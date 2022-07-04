@@ -1,3 +1,69 @@
+import re
+
+
+def parse_text(s, mode='md', s_url_md=''):
+    """
+    origin style = html
+    :param s:
+    :param mode:
+    :return:
+    """
+    s_lcl = ''
+    if mode == 'md':
+        if '<b>' in s:
+            s = s.replace('<b>', '**')
+            s = s.replace('</b>', '**')
+        if '<i>' in s:
+            s = s.replace('<i>', '_')
+            s = s.replace('</i>', '_')
+        if '<code>' in s:
+            s = s.replace('<code>', '```')
+            s = s.replace('</code>', '```')
+        # links
+        if '<a' in s:
+            lst_lcl = s.split('<a ')
+            for e in lst_lcl:
+                # internal links
+                if e[:7] == 'href="#':
+                    # extract internal link text
+                    match = re.search('>(.+?)<', e)
+                    s_link_text = match.group(1)
+                    # extract internal link ref
+                    match = re.search('"#(.+?)"', e)
+                    s_link_ref = match.group(1)
+                    s_old = '<a href="#{}">{}</a>'.format(s_link_ref, s_link_text)
+                    lst_link_ref = s_link_ref.split(' ')
+                    if len(lst_link_ref) > 0:
+                        s_link_md_ref = '-'.join(lst_link_ref)
+                    else:
+                        s_link_md_ref = s_link_ref
+                    # remove '.'
+                    s_link_md_ref = s_link_md_ref.replace('.', '')
+                    s_url_md_ref = '{}#{}'.format(s_url_md, s_link_md_ref.lower())
+                    s_new = '[{}]({})'.format(s_link_text, s_url_md_ref)
+                    s = s.replace(s_old, s_new)
+                # external links
+                if e[:7] == 'href="h':
+                    # extract internal link text
+                    match = re.search('>(.+?)<', e)
+                    s_link_text = match.group(1)
+                    # extract internal link ref
+                    match = re.search('"(.+?)"', e)
+                    s_link_ref = match.group(1)
+                    s_old = '<a href="{}">{}</a>'.format(s_link_ref, s_link_text)
+                    s_link_md_ref = s_link_ref
+                    s_url_md_ref = '{}'.format(s_link_md_ref)
+                    s_new = '[{}]({})'.format(s_link_text, s_url_md_ref)
+                    s = s.replace(s_old, s_new)
+        s_lcl = s
+    elif mode == 'html':
+        s_lcl = s
+    elif mode == 'tex':
+        # todo tex parsing
+        pass
+    else:
+        s_lcl = s
+    return s_lcl
 
 
 def boldface(s, mode='md'):
@@ -62,7 +128,7 @@ def heading(s, n_level=1, mode='md'):
     if mode == 'md':
         s_lcl = '\n{} {}'.format('#' * n_level, s)
     elif mode == 'html':
-        s_lcl = '\n<h{}>{}</h{}>'.format(n_level, s, n_level)
+        s_lcl = '\n<h{} id="{}">{}</h{}>'.format(n_level, s, s, n_level)
     elif mode == 'tex':
         if n_level == 1:
             s_aux = ''

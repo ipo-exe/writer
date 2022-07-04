@@ -1,5 +1,5 @@
 # writer
-Python automation for Markdown, HTML and LaTeX
+Python **automation** for Markdown, HTML and LaTeX
 
 1) Item
 2) Item
