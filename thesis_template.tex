@@ -1,0 +1,380 @@
+\documentclass[11pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+% ------------ packages section ------------  
+% page set up
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+% epigraph
+\usepackage{epigraph}
+% numbering
+\usepackage[utf8]{inputenc}
+% language set up
+\usepackage[english, main=portuguese]{babel}
+\usepackage{csquotes}
+% line spacing
+\usepackage{setspace}
+% adjust margins
+\usepackage{changepage}
+% number lines
+\usepackage{lineno}
+% titles
+\usepackage{titlesec}
+% colors
+\usepackage[dvipsnames]{xcolor}
+% sorted lists package
+\usepackage{enumerate}
+% insert graphics
+\usepackage{graphicx}
+% wrapp figures in text
+\usepackage{wrapfig}
+% math package
+\usepackage{amsmath}
+% appendix
+\usepackage[title]{appendix}
+% letter symbol
+\usepackage[misc]{ifsym}
+% frame s
+\usepackage{tcolorbox}
+\usepackage{nameref}
+% acronymns
+\usepackage[acronym,nonumberlist]{glossaries}
+% caption package - settings
+\usepackage[font={scriptsize,sf}, labelfont=bf]{caption}
+% BibLaTeX
+\usepackage[backend=biber, style=bwl-FU]{biblatex}
+
+
+% ------------ links setup ------------
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={Overleaf Example},
+	pdfpagemode=FullScreen,
+}
+
+% ------------ box setup ------------ 
+% simple box
+\newtcolorbox[auto counter,number within=section]{simplebox}[2][]{
+arc=0mm,
+coltitle=white,
+coltext=black,
+colback=lightgray,
+colframe=darkgray,
+fontupper=\sffamily,
+fonttitle=\sffamily\bfseries,
+title=\sffamily Box~\thetcbcounter -- #2,#1
+}
+
+% code box
+\newtcolorbox[auto counter,number within=section]{algbox}[2][]{
+arc=0mm,
+coltitle=white,
+coltext=black,
+colback=lightgray,
+colframe=darkgray,
+fontupper=\sffamily,
+fonttitle=\sffamily\bfseries,
+title=\sffamily Algorithm~\thetcbcounter -- #2,#1
+}
+
+% ------------ theorems ------------ 
+%\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+
+% ------------ page setup ------------ 
+%\pagecolor{black}
+%\color{white}
+
+% fig width
+\newcommand{\figwid}{5.8in}
+% Set formats for each heading level
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\huge\bfseries}
+  {\chaptertitlename\ \thechapter}{20pt}{\LARGE}
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\normalsize\bfseries\sffamily}
+
+
+% ------------ listing setup ------------
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{lightgray},   
+	commentstyle=\color{darkgray},
+	keywordstyle=\color{purple},
+	numberstyle=\tiny\color{gray},
+	stringstyle=\color{teal},
+	basicstyle=\color{black}\ttfamily\footnotesize\linespread{2.5},
+	breakatwhitespace=false,         
+	breaklines=false,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=2pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=3
+}
+\lstset{style=mystyle}
+\renewcommand\lstlistingname{\algname}
+
+% ------ set metadata ------ 
+
+% set the figure folder
+\graphicspath{{./figs}}
+% set up labelformat and labelsep for figure
+\captionsetup[figure]{labelformat=simple, labelsep=quad}
+% add references
+%%%% \addbibresource{refs.bib}
+
+% ------------ main document ------------ 
+\begin{document}
+
+% first sections
+\pagenumbering{roman}
+% spacing in the first pages
+\singlespacing
+
+% first sections
+\section*{First sections}
+
+\par Lorem ipsum dolor sit amet \ref{box:01}, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\today
+	
+\clearpage	
+
+\linenumbers % start line numeration
+%\doublespacing % line spacing	
+\pagenumbering{arabic} % start arabic numeration
+
+\section*{Intro} \label{sec:intro}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit \ref{assump:01}. Sed ac bibendum orci \ref{box:01}. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. 
+
+\chapter{Here is a long, academic, cool, fancy name for a first chapter: the return} \label{chap:1}
+
+\epigraph{Ah shit, here we go again}{C-J}
+
+\section{Sec1} \label{sec:intro}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit \ref{assump:01}. Sed ac bibendum orci \ref{box:01}. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. 
+
+\subsection{Equation demo} \label{sec:intro:1}
+
+\par Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{equation} % the equation environment. 
+		\label{eq:myeq}
+		\delta_{i} = \mu_{1, i} - \mu_{0, i} \quad \forall i 
+\end{equation}
+Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque \eqref{eq:myeq} habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+
+\par Curabitur vulputate ac elit sed iaculis. Proin feugiat scelerisque sem at tincidunt. Praesent sed fringilla enim. Suspendisse fermentum mattis erat, at ultricies tortor congue id. Integer id interdum tortor. Cras in cursus augue. Duis eros felis, luctus ut tincidunt quis, placerat nec eros. Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus. Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel. Vestibulum et eros eget lectus malesuada cursus. Vivamus faucibus sapien id quam malesuada, non malesuada lectus sagittis. 
+
+\subsection{Fig demo} \label{sec:intro:2}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+% figure
+\begin{figure}[t!] % place figure in the page
+		\centering				
+		\includegraphics[width=\figwid]{golden_1x.png}		
+		\caption[A standard figure]
+		{ \textbf{---\;Curabitur vulputate ac elit sed iaculis.}
+		\textbf{a.}\,Integer id interdum tortor. Cras in cursus augue. Duis eros felis, luctus ut tincidunt quis, placerat nec eros. Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus.
+		\textbf{b.}\,Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel. Vestibulum et eros eget lectus malesuada cursus. Vivamus faucibus sapien id quam malesuada, non malesuada lectus sagittis. 
+		\textbf{c.}\,Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+		}
+\label{fig:myfig}  % use qualitative label			
+\end{figure}
+
+\par Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+
+\subsection{Footnote demo} \label{sec:intro:3}
+
+\par Curabitur vulputate ac elit sed iaculis. Proin feugiat scelerisque sem at tincidunt. Praesent\footnote{Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus.Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus. Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula.} sed fringilla enim. Suspendisse fermentum mattis erat, at ultricies tortor congue id. Integer id interdum tortor. Cras in cursus augue. Duis eros felis, luctus ut tincidunt quis, placerat nec eros. Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer\footnote{Quisque aliquet mattis urna, vel luctus odio eleifend vel. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus.Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus. Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel.} non enim ultricies odio fringilla maximus. Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel. Vestibulum et eros eget lectus malesuada cursus. Vivamus faucibus sapien id quam malesuada, non malesuada lectus sagittis. 
+
+\subsection{Large Fig demo} \label{sec:intro:4}
+
+\par Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+
+% figure
+\begin{figure}[t!] % place figure in the page
+		\centering				
+		\includegraphics[width=5.7in]{golden_2x.png}		
+		\caption[A standard figure]
+		{ \textbf{---\;Curabitur vulputate ac elit sed iaculis.}
+		\textbf{a.}\,Integer id interdum tortor. Cras in cursus augue. Duis eros felis, luctus ut tincidunt quis, placerat nec eros. Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus.
+		\textbf{b.}\,Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel. Vestibulum et eros eget lectus malesuada cursus. Vivamus faucibus sapien id quam malesuada, non malesuada lectus sagittis. 
+		\textbf{c.}\,Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+		}
+		\label{fig:myfig2}  % use qualitative label			
+\end{figure}
+
+\par Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+
+\par Curabitur vulputate ac elit sed iaculis. Proin feugiat scelerisque sem at tincidunt. Praesent sed fringilla enim. Suspendisse fermentum mattis erat, at ultricies tortor congue id. Integer id interdum tortor. Cras in cursus augue. Duis eros felis, luctus ut tincidunt quis, placerat nec eros. Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus. Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel. Vestibulum et eros eget lectus malesuada cursus. Vivamus faucibus sapien id quam malesuada, non malesuada lectus sagittis. 
+
+\subsection{Table demo} \label{sec:intro:5}
+
+\par Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+
+\begin{table}[t] 
+		 % placed on top of page
+		\centering	
+		\small
+		\begin{tabular}{ l  l  l  l  l} % preset number of columns and aligment
+			\hline
+			\textbf{Parâmetro} & \textbf{Definição} & \textbf{Unidades} & \textbf{Escala} & \textbf{Configuração}\\  
+			\hline
+			$\lambda$ & índice de saturação global & - & global & calibragem\\
+			$m$ & coeficiente de decaimento exponencial & mm & global & calibragem\\
+			$Q_o$ & escoamento de base máximo & $\text{mm}\cdot\Delta\,t^{-1}$ & global & calibragem\\
+			$cpmax$ & capacidade de armaz. no dossel & mm & local & calibragem\\
+			$sfmax$ & capacidade de armaz. na superfície & mm & local & calibragem\\
+			$erz$ & zona de raízes efetiva & mm & local & calibragem\\
+			$\Phi$ & porosidade efetiva & mm/mm & local & ok\\
+			$ksat$ & condutividade hidráulica efetiva & $\text{mm}\cdot\Delta\,t^{-1}$ & local & calibragem \\
+			$c$ & temperatura de escala & $^{\circ}\,C$ & global & calibragem\\
+			$k$ & tempo de residência médio efetivo & $\Delta\,t$ & global & calibragem\\
+			$n$ & número efetivo de reservatórios & - & global & calibragem\\
+			$w$ & predominância do ok sobre o & - & global & ok \\
+			$h_{max}$ & limiar superior de ok & m & global & ok \\
+			\hline
+		\end{tabular}
+		\caption{Parâmetros do modelo \texttt{PLANS}}
+		\label{tbl:params}
+	\end{table} 
+
+\par Curabitur vulputate ac elit sed iaculis. Proin feugiat scelerisque sem at tincidunt. Praesent sed fringilla enim. Suspendisse fermentum mattis erat, at ultricies tortor congue id. Integer id interdum tortor. Cras in cursus augue. Duis eros felis, luctus ut tincidunt quis, placerat nec eros. Suspendisse mi mauris, pretium et placerat et, pretium sed lorem. Integer non enim ultricies odio fringilla maximus. Praesent aliquet tincidunt lacinia. Integer rutrum porta massa, vel venenatis ex hendrerit et. Proin luctus aliquet vehicula. Quisque aliquet mattis urna, vel luctus odio eleifend vel. Vestibulum et eros eget lectus malesuada cursus. Vivamus faucibus sapien id quam malesuada, non malesuada lectus sagittis. 
+
+\par Integer ullamcorper mauris augue, et tempor lorem elementum ornare. Suspendisse scelerisque efficitur massa, eu pharetra mauris molestie eu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis ligula nulla. Donec lobortis non lorem quis gravida. Morbi tristique laoreet finibus. Mauris ullamcorper ipsum ac tortor dignissim bibendum. Pellentesque cursus diam sed turpis iaculis ornare. Integer quis efficitur nibh.
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\subsection{Frames demo}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{verbatim}
+Text enclosed inside \texttt{verbatim} environment 
+is printed directly 
+and all \LaTeX{} commands are ignored.
+\end{verbatim}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+% https://texdoc.org/serve/tcolorbox.pdf/0
+
+\begin{algbox}[
+label={mynamelabel},
+nameref={Title or anything else}
+]{Code title}
+Ok this is an algorithm
+\tcblower
+\begin{lstlisting}[language=Python]
+"""
+This is a triple quotes comment
+"""
+import numpy as np
+s_aux = 'this is a string'
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+\end{lstlisting}
+\label{box:02}
+\end{algbox}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{simplebox}[
+label={mynamelabel},
+nameref={Title or anything else}
+]{Title text}
+ras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. \textbf{Interdum et malesuada} fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. \textit{Integer ornare erat neque, id finibus velit ultrices in}. Suspendisse dapibus tortor eget lorem pretium venenatis.
+\begin{equation} % the equation environment. 
+		\label{eq:myeq2}
+		\delta_{i} = \mu_{1, i} - \mu_{0, i} \quad \forall i 
+\end{equation}
+Curabitur $x$ mollis eros. \textit{Integer ornare erat neque, id finibus velit ultrices in}. Suspendisse dapibus tortor eget lorem pretium venenatis.
+\label{box:01}
+\end{simplebox}
+
+\subsection{Definition demo}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{problem}[Demarcation]
+A fibration is a mapping between \textbf{two topological} spaces that has the homotopy lifting property for every space.
+\end{problem}
+
+\par Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{assumption}[Hydrological Similarity]
+A fibration is a mapping between \textbf{two topological} spaces that has the homotopy lifting property for every space.
+\begin{equation*} % the equation environment. 
+		\delta_{i} = \mu_{1, i} - \mu_{0, i} \quad \forall i 
+\end{equation*}
+Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus.
+\label{assump:01}
+\end{assumption}
+
+\begin{assumption}[Scale]
+A fibration is a mapping between \textbf{two topological} spaces that has the homotopy lifting property for every space.
+\end{assumption}
+
+\par Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{definition}[Simplicity]
+A fibration is a mapping between \textbf{two topological} spaces that has the homotopy lifting property for every space.
+\end{definition}
+
+\par Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\section{Fluxo de trabalho}
+
+\par Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\begin{enumerate}
+\item escrever os parágrafos, já incluindo glossário, equações, figuras, citações e demais referências com rótulos -- trabalho que precisa ser feito "on the fly".
+\item projetar o rascunho das figuras
+\item grifagem "humana"
+\item figuras finais
+\item legenda das figuras -- etapa importante!!
+\item notas de rodapé
+\item finalizar as caixas e apêndices.
+\item automatizar a inserção das tabelas -- ideia de ler comentário para inserir via python.
+\item automatizar a inserção de grifagem especial.
+\end{enumerate}
+
+\subsection{New sub}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\subsection{New sub}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. Nulla placerat iaculis faucibus. Sed ultricies porttitor risus in finibus. Morbi tempus posuere orci eget hendrerit. Nam condimentum quis purus ut porta. Nunc dapibus eget magna et placerat.
+
+\chapter{Here is a new long, academic, cool, fancy name for a second chapter: the return} \label{chap:2}
+
+\epigraph{Quanto mais rápido, mais rápido}{C-J}
+
+\section{Sec1} \label{chp2:sec1}
+
+\par Lorem ipsum dolor sit amet, consectetur adipiscing elit \ref{assump:01}. Sed ac bibendum orci \ref{box:01}. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur at mollis eros. Integer ornare erat neque, id finibus velit ultrices in. Suspendisse dapibus tortor eget lorem pretium venenatis. 
+
+
+\end{document}
