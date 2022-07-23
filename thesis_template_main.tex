@@ -130,16 +130,25 @@ title=\sffamily Algorithm~\thetcbcounter -- #2,#1
 \lstset{style=mystyle}
 
 % ------ set metadata ------ 
-% set the figure folder
-\graphicspath{{./figs}}
+\hypersetup{
+pdftitle={my_title},
+pdfsubject={my_subject},
+pdfauthor={my_name},
+pdfkeywords={keywords}
+}
 
 % ------------ figure setup ------------
+% set the figure folder
+\graphicspath{{./figs}}
 \captionsetup[figure]{labelformat=simple, labelsep=quad}
 
 % ------------ references setup ------------
 %%%% \addbibresource{refs.bib}
 
 % ------------ names setup ------------
+\newcommand{\nameChap}{Capítulo}
+\newcommand{\nameSec}{Seção}
+\newcommand{\nameAppendix}{Apêndice}
 \newcommand{\nameTable}{Tabela}
 \newcommand{\nameFigure}{Figura}
 \newcommand{\nameEq}{Equação}
