@@ -1,0 +1,7 @@
+Id;Name;Alias;Color;fcpmax;fsfmax;froots;fperv
+1;Water;Wa;blue;0.07;0.07;0.07;1
+2;Road;Rd;8c8a85;0.2;0.2;0.2;0.2
+3;Forest;Fs;green;1;1;1;1
+4;Pasture;Ps;79a832;0.53;0.53;0.53;1
+5;Rice;Rc;0c967b;0.4;0.4;0.4;1
+6;Soy;Sy;d18449;0.4;0.4;0.4;1

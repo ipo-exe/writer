@@ -214,7 +214,7 @@ def append_ordered_list(lst_items, mode='md'):
     return lst_lcl
 
 
-def append_table(df_table, mode='md', s_caption='', n_id=1):
+def append_table(df_table, mode='md', s_caption='', n_id=1, s_tex_label='label'):
     lst_lcl = list()
     df_table = df_table.astype(str)
     s_lcl = ''
@@ -252,13 +252,13 @@ def append_table(df_table, mode='md', s_caption='', n_id=1):
             lst_lcl.append('\n</tr>')
         lst_lcl.append('\n</table>')
     elif mode == 'tex':
-        lst_lcl.append('')
+        lst_lcl.append('\n')
         lst_lcl.append(r'\begin{table}[h!]')
-        lst_lcl.append('\n\centering\n')
+        lst_lcl.append('\n\centering')
         if s_caption == '':
             pass
         else:
-            lst_lcl.append('\n\caption{' + s_caption + '}')
+            lst_lcl.append('\n\caption{' + s_caption + '}\n')
         lst_lcl.append(r'\begin{tabular}{|' + ' c ' * len(df_table.columns) + '|} ')
         # heading
         lst_lcl_heads = list()
@@ -270,10 +270,13 @@ def append_table(df_table, mode='md', s_caption='', n_id=1):
         # rows
         for i in range(len(df_table)):
             lst_lcl.append(r'{}\\ '.format(' & '.join(list(df_table.values[i]))))
-            lst_lcl.append('\n\hline\n')
+            if i == len(df_table) - 1:
+                lst_lcl.append('\n\hline')
+            else:
+                lst_lcl.append('\n')
         lst_lcl.append('\n\end{tabular}')
-        lst_lcl.append('\n\label{' + 'table:' + str(n_id) + '}')
-        lst_lcl.append('\n\end{table}')
+        lst_lcl.append('\n\label{' + 'table:' + s_tex_label + '}')
+        lst_lcl.append('\n\end{table}\n\n')
     else:
         lst_lcl = ['ok', 'ok']
     return lst_lcl
