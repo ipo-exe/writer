@@ -143,7 +143,7 @@ pdfkeywords={keywords}
 \captionsetup[figure]{labelformat=simple, labelsep=quad}
 
 % ------------ references setup ------------
-%%%% \addbibresource{refs.bib}
+\addbibresource{refs.bib}
 
 % ------------ names setup ------------
 \newcommand{\nameChap}{Capítulo}
@@ -181,7 +181,6 @@ pdfkeywords={keywords}
 \newacronym{gcd}{GCD}{Greatest Common Divisor}
 \newacronym{lcm}{LCM}{Least Common Multiple}
 
-
 % ------------ nomenclature setup ------------
 \makenomenclature
 
@@ -217,29 +216,6 @@ pdfkeywords={keywords}
 \par Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 \clearpage
 
-\epigraph{
-Segue o seco sem sacar que o caminho é seco \\
-Sem sacar que o espinho é seco\\
-Sem sacar que seco é o ser sol\\
-Sem sacar que algum espinho seco secará\\
-E a água que sacar será um tiro seco\\
-E secará o seu destino secará\\
-Ô chuva vem me dizer\\
-Se posso ir lá em cima pra derramar você\\
-Ô chuva vem, ô chuva vem me dizer\\
-Ô chuva preste atenção\\
-Se o povo lá de cima vive na solidão\\
-Se acabar não acostumando\\
-Se acabar parado calado\\
-Se acabar baixinho chorando\\
-Se acabar meio abandonado\\
-Pode ser lágrimas de São Pedro\\
-Ou talvez um grande amor chorando\\
-Pode ser o desabotoado céu\\
-Pode ser coco derramando
-}{\textit{Marisa Monte}}
-\clearpage
-
 % table of contents
 \tableofcontents
 \clearpage	
@@ -262,19 +238,24 @@ Pode ser coco derramando
 \printnomenclature
 \clearpage
 
+% ---------------- Epigraph ---------------- 
+\subfile{epigraph}
+
+% ---------------- Chapters setup ---------------- 
 \linenumbers % start line numeration
 %\doublespacing % line spacing	
 \pagenumbering{arabic} % start arabic numeration
 
-\subfile{chap01}
+% ---------------- Chapters ---------------- 
+\subfile{chap_boring}
 
-\subfile{chap02}
+\subfile{chap_interesting}
 
 \clearpage
-
+%%%% \singlespacing
 % ---------------- Glossary ---------------- 
 \section*{delete this section}
-\par Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed ac bibendum orci. Cras erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames \gls{amizade} ac ante ipsum primis in faucibus. 
+\par Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed ac bibendum orci. Cras \cite{Popper1934} erat elit, consequat vel erat ac, tincidunt pulvinar lacus. Pellentesque vitae consectetur quam. Interdum et malesuada fames \gls{amizade} ac ante ipsum primis in faucibus. 
 The \Gls{latex} typesetting markup language is specially suitable 
 for documents that include \gls{maths}. 
 
@@ -286,11 +267,9 @@ process is similar to that used for the \acrfull{lcm}.
 
 \printglossary[title=Glossário, toctitle=Glossário]
 
-
 \clearpage
 % ---------------- References ---------------- 
-
-
+\printbibliography
 
 % ---------------- Appendix ---------------- 
 \begin{appendices}
