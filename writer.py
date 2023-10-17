@@ -1,5 +1,29 @@
 import re
 
+def full_reference(entry_dct, entry_type="article", mode="tex"):
+    s_lcl = ''
+    if entry_dct["ENTRYTYPE"] == entry_type:
+        # authors
+        lst = entry_dct["author"].split("and")
+        if len(lst) > 2:
+            first = lst[0].strip().split(" ")[-1].strip()
+            s_author = "{} et al.,".format(first)
+        else:
+            first = lst[0].strip().split(" ")[-1].strip()
+            second = lst[1].strip() .split(" ")[-1].strip()
+            s_author = "{} and {}".format(first, second)
+        s_lcl = r"{} ({}). {}. In: {} {}, pp. {}. ISSN: {}. DOI: https://{}.".format(
+            s_author,
+            entry_dct["year"].strip(),
+            boldface(entry_dct["title"].strip()),
+            italics(entry_dct["journal"].strip()),
+            entry_dct["volume"].strip(),
+            entry_dct["pages"].strip(),
+            entry_dct["issn"].strip(),
+            entry_dct["doi"].strip()
+        )
+    return s_lcl
+    
 
 def parse_text(s, mode='md', s_url_md=''):
     """
@@ -65,7 +89,6 @@ def parse_text(s, mode='md', s_url_md=''):
         s_lcl = s
     return s_lcl
 
-
 def boldface(s, mode='md'):
     s_lcl = ''
     if mode == 'md':
@@ -78,6 +101,17 @@ def boldface(s, mode='md'):
         s_lcl = s_url
     return s_lcl
 
+def italics(s, mode="md"):
+    s_lcl = ''
+    if mode == 'md':
+        s_lcl = '_{}_'.format(s)
+    elif mode == 'html':
+        s_lcl = '<i>{}</i>'.format(s)
+    elif mode == 'tex':
+        s_lcl = r'\textit{' + s + '}'
+    else:
+        s_lcl = s_url
+    return s_lcl
 
 def table_heading(lst_fields, mode='md'):
     s_lcl = ''
