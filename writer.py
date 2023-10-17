@@ -15,8 +15,8 @@ def full_reference(entry_dct, entry_type="article", mode="tex"):
         s_lcl = r"{} ({}). {}. In: {} {}, pp. {}. ISSN: {}. DOI: https://{}.".format(
             s_author,
             entry_dct["year"].strip(),
-            boldface(entry_dct["title"].strip()),
-            italics(entry_dct["journal"].strip()),
+            boldface(entry_dct["title"].strip(), mode=mode),
+            italics(entry_dct["journal"].strip(), mode=mode),
             entry_dct["volume"].strip(),
             entry_dct["pages"].strip(),
             entry_dct["issn"].strip(),
